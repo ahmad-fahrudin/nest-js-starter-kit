@@ -1,8 +1,8 @@
 import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '../../users/users.service';
-import { LoginDto } from '../dto/login.dto';
-import { RegisterDto } from '../dto/register.dto';
+import { UsersService } from 'src/Module/users/service/users.service';
+import { LoginDto } from 'src/Module/auth/dto/login.dto';
+import { RegisterDto } from 'src/Module/auth/dto/register.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -46,9 +46,11 @@ export class AuthService {
 
     const hashedPassword = await bcrypt.hash(registerDto.password, 10);
     const user = await this.usersService.create(
-      registerDto.name,
-      registerDto.email,
-      hashedPassword,
+      {
+        name: registerDto.name,
+        email: registerDto.email,
+        password: hashedPassword,
+      }
     );
 
     const payload = { email: user.email, sub: user.id };
