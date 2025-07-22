@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { runSeeder, Seeder, SeederFactoryManager } from 'typeorm-extension';
-import dataSource from '../../../ormconfig';
+import dataSource from '../ormconfig';
 import UserSeeder from './user.seeder';
 
 export default class MainSeeder implements Seeder {
