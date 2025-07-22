@@ -27,7 +27,7 @@ import { ErrorHandlerHelper } from 'src/components/helpers/error-handler.helper'
 
 @ApiTags('Users')
 @Controller('users')
-// @UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
