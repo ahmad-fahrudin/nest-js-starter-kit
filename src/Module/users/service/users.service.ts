@@ -4,8 +4,8 @@ import { Repository } from 'typeorm';
 import { User } from 'src/database/entities/user.entity';
 import { CreateUserDto, UpdateUserDto, UserResponseDto, UserListResponseDto } from '../dto/users.dto';
 import { UsersDao } from '../dao/users.dao';
-import { PaginationRequestDto } from 'src/components/dto/pagination.dto';
-import { PaginationHelper } from 'src/components/pagination/pagination.helper';
+import { PaginationRequestDto } from 'src/components/swagger/dto/pagination.dto';
+import { PaginationHelper } from 'src/components/swagger/pagination/pagination.helper';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()

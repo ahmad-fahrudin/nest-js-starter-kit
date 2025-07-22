@@ -1,17 +1,9 @@
-import { FilterType } from '../dto/pagination.dto';
+import { FilterType } from './dto/pagination.dto';
 
 /**
  * Helper class for generating Swagger API examples dynamically
  */
 export class SwaggerExampleHelper {
-  /**
-   * Generate filter examples for a specific entity
-   *
-   * @param entityName The name of the entity (e.g., 'user', 'product')
-   * @param fields Object containing field names and example values with optional field descriptions
-   * @param additionalExamples Additional custom examples specific to this entity
-   * @returns Object with examples ready to use in @ApiBody decorator
-   */
   static generateFilterExamples(
     entityName: string,
     fields: Record<
@@ -219,11 +211,6 @@ export class SwaggerExampleHelper {
     };
   }
 
-  /**
-   * Generate common filter examples for Swagger documentation
-   *
-   * @returns Object with common filter examples
-   */
   static getCommonFilterExamples(): Record<string, any> {
     return {
       equal_filter: {
@@ -333,15 +320,6 @@ export class SwaggerExampleHelper {
     };
   }
 
-  /**
-   * Generate Swagger examples object for API Body decorator
-   *
-   * @param entityName The name of the entity (e.g., 'user', 'product')
-   * @param fields Object containing field names and example values with optional field descriptions
-   * @param includeCommonExamples Whether to include common filter examples
-   * @param additionalExamples Additional custom examples specific to this entity
-   * @returns Object ready for use in @ApiBody decorator
-   */
   static getSwaggerExamples(
     entityName: string,
     fields: Record<

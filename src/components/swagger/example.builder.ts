@@ -1,16 +1,9 @@
-import { FilterType } from '../dto/pagination.dto';
+import { FilterType } from './dto/pagination.dto';
 
 /**
  * Helper class to generate entity-specific Swagger examples for pagination and filtering
  */
 export class SwaggerExampleBuilder {
-  /**
-   * Creates entity-specific pagination examples that can be used in @ApiBody decorator
-   *
-   * @param entityName The name of the entity (e.g., 'user', 'product')
-   * @param searchFields Object containing field names and example values
-   * @returns Object with entity-specific examples
-   */
   static getEntityExamples(
     entityName: string,
     searchFields: Record<string, any>,

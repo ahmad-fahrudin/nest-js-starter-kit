@@ -19,7 +19,7 @@ import { ApiTags, ApiOperation, ApiBody, ApiResponse, ApiBearerAuth, ApiParam } 
 import { UsersService } from '../service/users.service';
 import { CreateUserDto, UpdateUserDto, UserResponseDto, UserListResponseDto, PaginatedUsersResponseDto } from '../dto/users.dto';
 import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
-import { PaginationRequestDto } from 'src/components/dto/pagination.dto';
+import { PaginationRequestDto } from 'src/components/swagger/dto/pagination.dto';
 import { SwaggerExampleHelper } from 'src/components/swagger/example.helper';
 import { ResponseHelper } from 'src/components/http/response-helper';
 import { ResponseCode } from 'src/components/enums/response-code.enum';

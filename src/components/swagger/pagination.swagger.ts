@@ -1,5 +1,5 @@
 import { ApiBodyOptions } from '@nestjs/swagger';
-import { FilterType } from '../dto/pagination.dto';
+import { FilterType } from './dto/pagination.dto';
 
 /**
  * Standard Swagger documentation for pagination request body
@@ -353,11 +353,6 @@ export const PaginatedResponseSchema = {
   },
 };
 
-/**
- * Decorator factory for standard pagination endpoints
- * @param entityName The name of the entity being paginated (e.g., 'users', 'products')
- * @param entitySchema The schema for a single entity in the response
- */
 export function getPaginatedResponseSchema(
   entityName: string,
   entitySchema: Record<string, any>,

@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Like, SelectQueryBuilder } from 'typeorm';
 import { User } from 'src/database/entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from '../dto/users.dto';
-import { PaginationRequestDto } from 'src/components/dto/pagination.dto';
-import { PaginationHelper } from 'src/components/pagination/pagination.helper';
+import { PaginationRequestDto } from 'src/components/swagger/dto/pagination.dto';
+import { PaginationHelper } from 'src/components/swagger/pagination/pagination.helper';
 
 @Injectable()
 export class UsersDao {

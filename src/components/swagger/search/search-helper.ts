@@ -1,5 +1,5 @@
-import { QueryRequestBodyDto } from '../dto/search-query.dto';
-import { FilterType } from '../dto/pagination.dto';
+import { QueryRequestBodyDto } from 'src/components/swagger/dto/search-query.dto';
+import { FilterType } from 'src/components/swagger/dto/pagination.dto';
 import { SelectQueryBuilder } from 'typeorm';
 
 export class SearchHelper {

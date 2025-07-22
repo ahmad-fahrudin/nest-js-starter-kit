@@ -4,7 +4,7 @@ import {
   FilterType,
 } from '../dto/pagination.dto';
 import { ConfigService } from '@nestjs/config';
-import { SearchHelper } from '../search/search-helper';
+import { SearchHelper } from 'src/components/swagger/search/search-helper';
 import { SelectQueryBuilder } from 'typeorm';
 
 export class PaginationHelper {
