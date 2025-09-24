@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository} from 'typeorm';
+import { Repository, IsNull } from 'typeorm';
 import { User } from 'src/Module/users/entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from 'src/Module/users/dto/users.dto';
 import { PaginationHelper } from 'src/components/swagger/pagination/pagination.helper';
@@ -14,6 +14,9 @@ export class UsersDao {
 
   async findAll(): Promise<User[]> {
     return this.usersRepository.find({
+      where: {
+        deletedAt: IsNull(),
+      },
       order: {
         createdAt: 'DESC',
       },
@@ -21,11 +24,21 @@ export class UsersDao {
   }
 
   async findById(id: number): Promise<User | null> {
-    return this.usersRepository.findOne({ where: { id } });
+    return this.usersRepository.findOne({ 
+      where: { 
+        id,
+        deletedAt: IsNull()
+      } 
+    });
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    return this.usersRepository.findOne({ where: { email } });
+    return this.usersRepository.findOne({ 
+      where: { 
+        email,
+        deletedAt: IsNull()
+      } 
+    });
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -39,13 +52,16 @@ export class UsersDao {
   }
 
   async delete(id: number): Promise<boolean> {
-    const result = await this.usersRepository.delete(id);
+    const result = await this.usersRepository.update(id, {
+      deletedAt: new Date()
+    });
     return (result.affected ?? 0) > 0;
   }
 
   async existsByEmail(email: string, excludeId?: number): Promise<boolean> {
     const query = this.usersRepository.createQueryBuilder('user')
-      .where('user.email = :email', { email });
+      .where('user.email = :email', { email })
+      .andWhere('user.deletedAt IS NULL');
     
     if (excludeId) {
       query.andWhere('user.id != :excludeId', { excludeId });
@@ -63,6 +79,9 @@ export class UsersDao {
     sortOrder: string,
   ): Promise<{ rows: User[]; count: number }> {
     const queryBuilder = this.usersRepository.createQueryBuilder('user');
+
+    // Only include non-deleted users
+    queryBuilder.where('user.deletedAt IS NULL');
 
     // Apply search filters
     if (searchQuery && searchQuery.length > 0) {
