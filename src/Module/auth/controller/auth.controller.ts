@@ -7,7 +7,7 @@ import { AuthResponseDto } from '../dto/auth-response.dto';
 import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 import { CurrentUser } from '../decorators/current-user.decorator';
-import { User } from '../../../database/entities/user.entity';
+import { User } from '../../users/entities/user.entity';
 
 @ApiTags('Authentication')
 @Controller('auth')

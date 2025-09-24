@@ -22,7 +22,10 @@
     "migration:generate": "npm run typeorm -- migration:generate -d ormconfig.ts",
     "migration:run": "npm run typeorm -- migration:run -d ormconfig.ts",
     "migration:revert": "npm run typeorm -- migration:revert -d ormconfig.ts",
-    "seed:run": "ts-node src/database/seeds/index.ts"
+    "seed:run": "ts-node src/database/seeds/index.ts",
+    "db:setup": "npm run migration:run && npm run seed:run",
+    "db:reset": "npm run migration:revert && npm run migration:run && npm run seed:run",
+    "db:fresh": "npm run typeorm -- schema:drop -d ormconfig.ts && npm run migration:run && npm run seed:run"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",

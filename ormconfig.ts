@@ -10,7 +10,7 @@ const dataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || 'password',
   database: process.env.DB_NAME || 'nestjs_db',
-  entities: [__dirname + '/src/database/entities/*.entity{.ts,.js}'],
+  entities: [__dirname + '/src/Module/**/entities/*.entity{.ts,.js}'],
   migrations: [__dirname + '/src/database/migrations/*{.ts,.js}'],
   synchronize: false,
   logging: true,

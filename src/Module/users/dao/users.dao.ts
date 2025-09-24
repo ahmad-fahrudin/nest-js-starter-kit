@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Like, SelectQueryBuilder } from 'typeorm';
-import { User } from 'src/database/entities/user.entity';
-import { CreateUserDto, UpdateUserDto } from '../dto/users.dto';
-import { PaginationRequestDto } from 'src/components/swagger/dto/pagination.dto';
+import { Repository} from 'typeorm';
+import { User } from 'src/Module/users/entities/user.entity';
+import { CreateUserDto, UpdateUserDto } from 'src/Module/users/dto/users.dto';
 import { PaginationHelper } from 'src/components/swagger/pagination/pagination.helper';
 
 @Injectable()

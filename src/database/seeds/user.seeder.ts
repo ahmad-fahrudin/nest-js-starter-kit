@@ -1,12 +1,11 @@
 import { DataSource } from 'typeorm';
-import { Seeder, SeederFactoryManager } from 'typeorm-extension';
-import { User } from '../../database/entities/user.entity';
+import { Seeder } from 'typeorm-extension';
+import { User } from '../../Module/users/entities/user.entity';
 import * as bcrypt from 'bcrypt';
 
 export default class UserSeeder implements Seeder {
   public async run(
     dataSource: DataSource,
-    factoryManager: SeederFactoryManager,
   ): Promise<any> {
     const userRepository = dataSource.getRepository(User);
 
@@ -21,18 +20,18 @@ export default class UserSeeder implements Seeder {
     const users = [
       {
         name: 'John Doe',
-        email: 'john@example.com',
-        password: await bcrypt.hash('password123', 10),
+        email: 'john@gmail.com',
+        password: await bcrypt.hash('password', 10),
       },
       {
         name: 'Jane Smith',
-        email: 'jane@example.com',
-        password: await bcrypt.hash('password123', 10),
+        email: 'jane@gmail.com',
+        password: await bcrypt.hash('password', 10),
       },
       {
         name: 'Admin User',
-        email: 'admin@example.com',
-        password: await bcrypt.hash('admin123', 10),
+        email: 'admin@gmail.com',
+        password: await bcrypt.hash('password', 10),
       },
     ];
 

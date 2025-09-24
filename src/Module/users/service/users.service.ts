@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from 'src/database/entities/user.entity';
+import { User } from 'src/Module/users/entities/user.entity';
 import { CreateUserDto, UpdateUserDto, UserResponseDto, UserListResponseDto } from '../dto/users.dto';
 import { UsersDao } from '../dao/users.dao';
 import { PaginationRequestDto } from 'src/components/swagger/dto/pagination.dto';
